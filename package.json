@@ -1,5 +1,7 @@
 {
   "name": "melvyn-google-login",
   "version": "1.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "googleapis": "^105.0.0"
+  }
 }
