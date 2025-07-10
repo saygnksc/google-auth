@@ -1,6 +1,6 @@
-export default async function handler(req, res) {
-  const { google } = require('googleapis');
+import { google } from 'googleapis';
 
+export default async function handler(req, res) {
   const oauth2Client = new google.auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
@@ -9,12 +9,13 @@ export default async function handler(req, res) {
 
   const scopes = [
     'https://www.googleapis.com/auth/userinfo.profile',
-    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.email'
   ];
 
   const url = oauth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: scopes,
+    prompt: 'consent'
   });
 
   res.status(200).json({ url });
